@@ -2,15 +2,15 @@
 #include <avr/interrupt.h>
 #define F_CPU 16000000UL
 #include <util/delay.h>
-char pos=0x00;
+char pos=0;
 
-void config_PCI(void) {
+void config_INT(void) {
 
     EIMSK |= 0x03;      
     EICRA |= 0x0A;         
 
-    DDRD &= ~(0x08);     
-    PORTD |= 0x08;        
+    DDRD &= ~(0x0C);     
+    PORTD |= 0x0C;        
 
        
 }
@@ -40,11 +40,13 @@ ISR(INT1_vect) {
 }
 
 int main(void){
-
+    pos=1;
+    
     DDRD|=0xC0;
 
 
-    config_PCI();
+
+    config_INT();
     sei();
 
     while(1){
