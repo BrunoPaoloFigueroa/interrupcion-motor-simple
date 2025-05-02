@@ -44,7 +44,8 @@ int main(void){
     DDRD|=0xC0;
 
 
-
+    config_PCI();
+    sei();
 
     while(1){
 
