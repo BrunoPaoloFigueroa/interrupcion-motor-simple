@@ -4,6 +4,17 @@
 #include <util/delay.h>
 char pos=0x00;
 
+void config_PCI(void) {
+
+    EIMSK |= 0x03;      
+    EICRA |= 0x0A;         
+
+    DDRD &= ~(0x08);     
+    PORTD |= 0x08;        
+
+       
+}
+
 ISR(INT1_vect) {
     _delay_ms(50); 
 
@@ -26,4 +37,20 @@ ISR(INT1_vect) {
             pos = 1;
             break;
     }
+}
+
+int main(void){
+
+    DDRD|=0xC0;
+
+
+
+
+    while(1){
+
+
+
+    }
+
+    return 0;
 }
